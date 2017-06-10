@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Restaurante</string>
+    <string name="available_tables">Mesas Disponibles</string>
+    <string name="title_activity_table_detail">TableDetailActivity</string>
+    <string name="action_settings">Settings</string>
+</resources>
