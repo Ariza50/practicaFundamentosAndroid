@@ -29,6 +29,7 @@ public class TablesActivity extends AppCompatActivity implements TableListFragme
 
             }
         }
+
         //  Si soy un dispositivo tipo tablet y me caben más cosas habré cargado el activity_tables sw400dp y por lo tanto me cabe la lista de mesas y la lista de comida de la mesa seleccionada.
         if (findViewById(R.id.view_detail_fragment) != null) {
             if(fm.findFragmentById(R.id.view_detail_fragment) == null) {

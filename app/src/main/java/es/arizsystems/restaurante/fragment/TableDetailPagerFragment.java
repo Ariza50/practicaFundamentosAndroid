@@ -112,8 +112,9 @@ class TableDetailPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
-        DishesListFragment fragment = DishesListFragment.newInstance(r.getMesa(position).getPlatos());
+        //  Le envio "position" para saber si estoy mostrando un listado de platos que tiene una mesa, o el listado entero de la carta.
+        //  En cuyo caso el detalle del plato debe mostrar además un campo para guardar detalles de la comanda.
+        DishesListFragment fragment = DishesListFragment.newInstance(r.getMesa(position).getPlatos(), position, false);
 
         return fragment;
     }

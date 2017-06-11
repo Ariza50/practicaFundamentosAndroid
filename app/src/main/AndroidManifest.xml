@@ -24,6 +24,16 @@
             android:label="@string/title_activity_table_detail"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".activity.DishDetailActivity"
+            android:label="@string/title_activity_dish_detail"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".activity.DishesListActivity"
+            android:label="@string/title_activity_dish_detail"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

@@ -117,7 +117,7 @@ public class TableListFragment extends Fragment {
                 @Override
                 protected LinkedList<Plato> doInBackground(Restaurante... params) {
                     publishProgress(50);
-                    return downloadForecast(params[0]);
+                    return downloadC(params[0]);
                 }
 
                 @Override
@@ -132,6 +132,14 @@ public class TableListFragment extends Fragment {
                     if (platos != null) {
                         // No ha habido errores descargando la información del tiempo, actualizo la interfaz
                         Restaurante.getInstance().setPlatos(platos);
+
+                        //  Para prueba le meto a la mesa uno todos los platos de la carta.
+                        Restaurante.getInstance().getMesa(0).setPlatos(Restaurante.getInstance().getPlatos());
+                        //Restaurante.getInstance().getMesa(1).setPlatos(Restaurante.getInstance().getPlatos());
+                        //Restaurante.getInstance().getMesa(2).setPlatos(Restaurante.getInstance().getPlatos());
+                        //Restaurante.getInstance().getMesa(3).setPlatos(Restaurante.getInstance().getPlatos());
+                        //Restaurante.getInstance().getMesa(4).setPlatos(Restaurante.getInstance().getPlatos());
+                        //Restaurante.getInstance().getMesa(5).setPlatos(Restaurante.getInstance().getPlatos());
 
                         actualizarCarta();
                     }
@@ -158,13 +166,13 @@ public class TableListFragment extends Fragment {
 
     }
 
-    private LinkedList<Plato> downloadForecast(Restaurante rest) {
+    private LinkedList<Plato> downloadC(Restaurante rest) {
         URL url = null;
         InputStream input = null;
 
         try {
 
-            url = new URL(String.format("http://www.mocky.io/v2/593856ef110000a21d6bb9cf", rest.toString()));
+            url = new URL(String.format("http://www.mocky.io/v2/593d7dee1100001c18722ac8", rest.toString()));
             HttpURLConnection connexion = (HttpURLConnection) url.openConnection();
             connexion.connect();
             byte data[] = new byte[1024];
@@ -186,23 +194,27 @@ public class TableListFragment extends Fragment {
                 String nombre = pl.getString("nombre");
                 Integer photo = pl.getInt("photo");
                 float pvp = (float) pl.getDouble("precio");
+                String desc = pl.getString("description");
 
                 switch (photo){
                     case 1:
-                        photo = R.drawable.restaurante;
+                        photo = R.drawable.calamares;
                         break;
                     case 2:
-                        photo = R.drawable.restaurante;
+                        photo = R.drawable.bravas;
                         break;
                     case 3:
-                        photo = R.drawable.restaurante;
+                        photo = R.drawable.sepia;
                         break;
                     case 4:
-                        photo = R.drawable.restaurante;
+                        photo = R.drawable.puntillla;
+                        break;
+                    case 5:
+                        photo = R.drawable.ensaladilla;
                         break;
                 }
 
-                Plato plato = new Plato(nombre, id, photo, pvp);
+                Plato plato = new Plato(nombre, id, photo, pvp, desc);
                 carta.add(plato);
 
             }
